@@ -25,6 +25,6 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialec
 
 ## Contributing
 
-All contributions are welcome and appreciated. For the most up to date information on contributing, please view our [Contributors' Guide](https://github.com/Matthew-Bunge-Software/Board-Game-Recs/blob/master/docs/CONTRIBUTING.md)
+All contributions are welcome and appreciated. For the most up to date information on contributing, please view our [Contributors' Guide](https://github.com/Matthew-Bunge-Software/Board-Game-Recs/blob/master/docs/CONTRIBUTING.md).
 
-When interacting with other contributors, please keep in mind the [Code of Conduct](https://github.com/Matthew-Bunge-Software/Board-Game-Recs/blob/master/docs/CODE_OF_CONDUCT.md)
+When interacting with other contributors, please keep in mind the [Code of Conduct](https://github.com/Matthew-Bunge-Software/Board-Game-Recs/blob/master/docs/CODE_OF_CONDUCT.md).
