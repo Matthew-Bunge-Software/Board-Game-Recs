@@ -22,3 +22,7 @@ spring.datasource.username=testuser
 spring.datasource.password=qwerty
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
 ```
+
+## Contributing
+
+All contributions are welcome and appreciated. For the most up to date information on contributing, please view our [Contributors' Guide](https://github.com/Matthew-Bunge-Software/Board-Game-Recs/blob/master/CONTRIBUTING.md)
