@@ -9,12 +9,14 @@ This project was created to answer the above question. It is a tool to discover 
 
 ## Getting Started
 
-This is a Java Spring boot project. You can import it as a Gradle project in your favorite Java IDE or you can run the following commmands to build it yourself:
+This is a Java Spring boot project. You can import it as a Gradle project in your favorite Java IDE or you can run the following commmands to build and deploy it yourself:
 
 ```
 ./gradlew clean
 ./gradlew build
+java -jar .\build\libs\bgg-info-0.0.2-SNAPSHOT.jar
 ```
+The project will be up and running on localhost:8080 by default.
 
 By default, the project uses an embedded H2 database. However, if you have your own favorite db engine, you can edit 'application.properties' with the proper options. Hibernate will autogenerate all the necessary tables. As an example, here is what the options look like for the MySQL DB on my machine:
 
