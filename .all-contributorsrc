@@ -1,0 +1,28 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "mattb555",
+      "name": "Matthew Bunge",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/10692492?v=4",
+      "profile": "https://github.com/mattb555",
+      "contributions": [
+        "code",
+        "design",
+        "ideas",
+        "maintenance",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Board-Game-Recs",
+  "projectOwner": "Matthew-Bunge-Software",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
