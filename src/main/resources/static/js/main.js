@@ -129,6 +129,11 @@ color = d3.scaleSequential(d3.interpolateBuPu).domain([0, d3.max(bins, d => d.le
         .attr("d", hexbin.hexagon())
         .attr("transform", d => `translate(${d.x},${d.y})`)
         .attr("fill", d => color(d.length));
+    
+    svg.selectAll("path")
+        .on("click", function(data) {
+            $("#gameTable").DataTable().clear().rows.add(data).draw();
+        });
 
     return svg.node();
 }
