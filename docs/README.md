@@ -20,9 +20,11 @@ spring.datasource.url=jdbc:mysql://localhost:3306/BggPollDb?createDatabaseIfNotE
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.username=testuser
 spring.datasource.password=qwerty
-spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
 ```
 
 ## Contributing
 
-All contributions are welcome and appreciated. For the most up to date information on contributing, please view our [Contributors' Guide](https://github.com/Matthew-Bunge-Software/Board-Game-Recs/blob/master/CONTRIBUTING.md)
+All contributions are welcome and appreciated. For the most up to date information on contributing, please view our [Contributors' Guide](https://github.com/Matthew-Bunge-Software/Board-Game-Recs/blob/master/docs/CONTRIBUTING.md)
+
+When interacting with other contributors, please keep in mind the [Code of Conduct](https://github.com/Matthew-Bunge-Software/Board-Game-Recs/blob/master/docs/CODE_OF_CONDUCT.md)
