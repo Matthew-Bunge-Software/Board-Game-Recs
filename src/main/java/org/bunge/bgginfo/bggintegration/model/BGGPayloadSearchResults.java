@@ -1,14 +1,13 @@
 package org.bunge.bgginfo.bggintegration.model;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import org.bunge.bgginfo.playerspoll.PlayersPollDAO;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.bunge.bgginfo.playerspoll.PlayersPollDAO;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @XmlRootElement(name = "items")
 public class BGGPayloadSearchResults {
@@ -28,49 +27,59 @@ public class BGGPayloadSearchResults {
 
     @Override
     public String toString() {
-        return item[0].name[0].value;
+        String[] names = new String[item.length];
+        for (int i = 0; i < item.length; ++i) {
+            names[i] = item[i].name[0].value;
+        }
+        return String.join(", ", names);
     }
 
-    public int getId() {
-        return item[0].id;
+    public int getItemCount() {
+        return item.length;
     }
 
-    public String getType() {
-        return item[0].type;
+    public int getId(int idx) {
+        return item[idx].id;
     }
 
-    public String getName() {
-        return Arrays.stream(item[0].name).filter(n -> n.type.equals("primary")).findFirst().get().value;
+    public String getType(int idx) {
+        return item[idx].type;
     }
 
-    public int getNumRatings() {
-        return item[0].statistics.ratings.usersRated.value;
+    public String getName(int idx) {
+        return Arrays.stream(item[idx].name).filter(n -> n.type.equals("primary")).findFirst().get().value;
     }
 
-    public double getAverage() {
-        return item[0].statistics.ratings.average.value;
+    public int getNumRatings(int idx) {
+        return item[idx].statistics.ratings.usersRated.value;
     }
 
-    public double getWeight() {
-        return item[0].statistics.ratings.averageWeight.value;
+    public double getAverage(int idx) {
+        return item[idx].statistics.ratings.average.value;
     }
 
-    public Set<PlayersPollDAO> getPolls() {
+    public double getWeight(int idx) {
+        return item[idx].statistics.ratings.averageWeight.value;
+    }
+
+    public Set<PlayersPollDAO> getPolls(int idx) {
         Set<PlayersPollDAO> s = new HashSet<>();
-        Results[] r = Arrays.stream(item[0].poll).filter(p -> p.name.equals("suggested_numplayers")).findFirst().get().results;
+        Results[] r = Arrays.stream(item[idx].poll).filter(p -> p.name.equals("suggested_numplayers")).findFirst().get().results;
         Arrays.stream(r).forEach(rs -> {
-            int rec, nRec, best;
-            rec = nRec = best = 0;
-            for (int i = 0; i < rs.result.length; i++) {
-                Result rslt = rs.result[i];
-                if (rslt.value.equals("Best"))
-                best = Integer.parseInt(rslt.numVotes);
-                else if (rslt.value.equals("Recommended"))
-                    rec = Integer.parseInt(rslt.numVotes);
-                else if (rslt.value.equals("Not Recommended"))
-                    nRec = Integer.parseInt(rslt.numVotes);
+            if (rs.result != null) {
+                int rec, nRec, best;
+                rec = nRec = best = 0;
+                for (int i = 0; i < rs.result.length; i++) {
+                    Result rslt = rs.result[i];
+                    if (rslt.value.equals("Best"))
+                        best = Integer.parseInt(rslt.numVotes);
+                    else if (rslt.value.equals("Recommended"))
+                        rec = Integer.parseInt(rslt.numVotes);
+                    else if (rslt.value.equals("Not Recommended"))
+                        nRec = Integer.parseInt(rslt.numVotes);
+                }
+                s.add(new PlayersPollDAO(getId(idx), rs.numPlayers, best, rec, nRec));
             }
-            s.add(new PlayersPollDAO(getId(), rs.numPlayers, best, rec, nRec));
         });
         return s;
 	}
