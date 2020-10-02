@@ -1,6 +1,6 @@
 # Board-Game-Recs
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > I want to know what Boardgames are fun to play with 3 people
@@ -44,6 +44,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/mattb555"><img src="https://avatars1.githubusercontent.com/u/10692492?v=4" width="100px;" alt=""/><br /><sub><b>Matthew Bunge</b></sub></a><br /><a href="https://github.com/Matthew-Bunge-Software/Board-Game-Recs/commits?author=mattb555" title="Code">💻</a> <a href="#design-mattb555" title="Design">🎨</a> <a href="#ideas-mattb555" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-mattb555" title="Maintenance">🚧</a> <a href="https://github.com/Matthew-Bunge-Software/Board-Game-Recs/pulls?q=is%3Apr+reviewed-by%3Amattb555" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/ironsigma"><img src="https://avatars0.githubusercontent.com/u/44488881?v=4" width="100px;" alt=""/><br /><sub><b>Juan D Frias</b></sub></a><br /><a href="https://github.com/Matthew-Bunge-Software/Board-Game-Recs/commits?author=ironsigma" title="Code">💻</a></td>
   </tr>
 </table>
 
