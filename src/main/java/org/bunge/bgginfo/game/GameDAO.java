@@ -20,7 +20,7 @@ public class GameDAO {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name", nullable = true, length = 100)
+    @Column(name = "name", nullable = true, length = 500)
     private String name;
 
     @Column(name = "numRatings")
