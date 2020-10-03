@@ -28,20 +28,10 @@ public class DefaultBGGService implements BGGService {
     PlayersPollRepo playersPollRepo;
 
     private WebClient webClient;
-    private Integer nextGameId;
+    private Integer nextGameId = 1;
 
     @PostConstruct
     public void init() {
-        // Init next game ID
-        nextGameId = gameRepo.findMaxId();
-        if (nextGameId == null) {
-            nextGameId = 1;
-
-        } else {
-            log.info("Latest game ID in local database is: {}", nextGameId);
-            nextGameId++;
-        }
-
         // Init web client
         webClient = WebClient.builder()
                 .baseUrl(BGG_URL_TEMPLATE)
@@ -71,18 +61,11 @@ public class DefaultBGGService implements BGGService {
         return gameRepo.findByAverage(perc);
 	}
 
-	public boolean maxGameIdReached() {
-        return nextGameId > BGG_MAX_GAME_ID;
-    }
-
     @Override
     public void getNextGameTerms() {
         String gameIdsParam = gameIdRangeToQueryParam();
-        if (gameIdsParam == null) {
-            log.info("No more game data to fetch (max ID reached)");
-        }
-
         log.info("Fetching game IDs: {}", gameIdsParam);
+
         BGGPayloadSearchResults gameData = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/thing")
@@ -116,15 +99,7 @@ public class DefaultBGGService implements BGGService {
         while (count < BGG_BATCH_SIZE) {
             // if we reached the max game ID, bail out.
             if (nextGameId > BGG_MAX_GAME_ID) {
-                log.info("Reached the max game ID of {}", BGG_MAX_GAME_ID);
-                break;
-            }
-
-            // if the game is already in the DB, skip.
-            if (gameRepo.findById(nextGameId).isPresent()) {
-                log.debug("Already have game ID {}, skipping", nextGameId);
-                nextGameId++;
-                continue;
+                nextGameId = 1;
             }
 
             // every subsequent ID, except the first, needs a comma after it.
@@ -138,11 +113,6 @@ public class DefaultBGGService implements BGGService {
             queryParam.append(nextGameId);
             nextGameId++;
             count++;
-        }
-
-        // No ids, probably maxed out.
-        if (count == 0) {
-            return null;
         }
 
         return queryParam.toString();

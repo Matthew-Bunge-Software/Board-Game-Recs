@@ -11,6 +11,4 @@ public interface BGGService {
     void getNextGameTerms();
 
     List<GameDTO> getMasterList(int average);
-
-    boolean maxGameIdReached();
 }

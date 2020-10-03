@@ -10,10 +10,8 @@ public class ScheduledTasks {
     @Autowired
     private BGGService bggService;
 
-    @Scheduled(fixedRate = 300)
+    @Scheduled(fixedRate = 3000)
     public void queryApi() {
-        if (!bggService.maxGameIdReached()) {
-            bggService.getNextGameTerms();
-        }
+        bggService.getNextGameTerms();
     }
 }

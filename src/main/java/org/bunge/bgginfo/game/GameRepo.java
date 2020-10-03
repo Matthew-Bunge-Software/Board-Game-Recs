@@ -19,7 +19,4 @@ public interface GameRepo extends CrudRepository<GameDAO, Integer> {
                     "ORDER BY ((average / (average_max * 1.0)) * ?1 + (num_ratings / (num_max * 1.0)) * (1.0 - ?1)) DESC LIMIT 500;",
         nativeQuery = true)
     List<GameDTO> findByAverage(Double average);
-
-    @Query(value = "SELECT MAX(id) FROM game;", nativeQuery = true)
-    Integer findMaxId();
 }
