@@ -1,12 +1,14 @@
 package org.bunge.bgginfo.bggintegration.service;
 
-import java.util.List;
-
 import org.bunge.bgginfo.game.GameDTO;
+
+import java.util.List;
 
 public interface BGGService {
     
-    public String getRandomGameTerms(int i);
+    String getRandomGameTerms(int i);
 
-    public List<GameDTO> getMasterList(int average);
+    void getNextGameTerms();
+
+    List<GameDTO> getMasterList(int average);
 }
