@@ -1,17 +1,10 @@
 package org.bunge.bgginfo.game;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import org.bunge.bgginfo.bggintegration.model.BGGPayloadSearchResults;
 import org.bunge.bgginfo.playerspoll.PlayersPollDAO;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Game")
@@ -42,14 +35,14 @@ public class GameDAO {
 
     }
 
-    public GameDAO(BGGPayloadSearchResults r) {
-        this.id = r.getId();
-        this.name = r.getName();
+    public GameDAO(BGGPayloadSearchResults r, int index) {
+        this.id = r.getId(index);
+        this.name = r.getName(index);
         this.error = false;
-        this.polls = r.getPolls();
-        this.numRatings = r.getNumRatings();
-        this.average = r.getAverage();
-        this.weight = r.getWeight();
+        this.polls = r.getPolls(index);
+        this.numRatings = r.getNumRatings(index);
+        this.average = r.getAverage(index);
+        this.weight = r.getWeight(index);
     }
 
     public GameDAO(int id, boolean failed) {
@@ -61,7 +54,7 @@ public class GameDAO {
         return polls;
     }
 
-    public void setPolls(BGGPayloadSearchResults r) {
-        this.polls = r.getPolls();
+    public void setPolls(BGGPayloadSearchResults r, int index) {
+        this.polls = r.getPolls(index);
     }
 }
